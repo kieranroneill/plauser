@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Plauser",
-	"description": "Simply adds a browser button that allows you to play/pause your Google Music track.",
+	"description": "Allows you to play/pause your Google Music track from any tab.",
 	"version": "0.2",
 	"permissions": 
 	[
