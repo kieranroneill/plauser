@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Plauser",
-	"description": "Adds a browser button that plays/pauses your Google Music.",
+	"description": "Simply adds a browser button that allows you to play/pause your Google Music track.",
 	"version": "0.2",
 	"permissions": 
 	[
@@ -10,8 +10,8 @@
 	],
   	"icons": 
 	{ 
+		"16": "images/icon-plauser-16.png",
 		"48": "images/icon-plauser-48.png",
-		"96": "images/icon-plauser-96.png",
 		"128": "images/icon-plauser-128.png"
 	},
 	"background": 
@@ -20,10 +20,6 @@
 	},
 	"browser_action": 
 	{
-		"default_icon": 
-		{
-			"19": "images/icon-plauser-19.png",
-			"38": "images/icon-plauser-38.png"
-		}
+		"default_icon": "images/icon-plauser-128.png"
 	}
 }
