@@ -13,7 +13,7 @@ GoogleMusicPlauser.prototype.playPause = function(tabId)
 	(
 		tabId, 
 		{
-			code: 'location.assign(\'javascript:SJBpost("playPause");void 0\');'
+			code: 'document.querySelector(\'[data-id="play-pause"]\').click();'
 		}
 	);
 };
