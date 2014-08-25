@@ -2,12 +2,13 @@
 	"manifest_version": 2,
 	"name": "Plauser",
 	"description": "Allows you to play/pause your currently playing track from any tab.",
-	"version": "0.4",
+	"version": "0.5",
 	"permissions": 
 	[
 		"tabs",
 		"https://play.google.com/music/*",
-		"https://play.spotify.com/*"
+		"https://play.spotify.com/*",
+		"https://www.youtube.com/*"
 	],
   	"icons": 
 	{ 
