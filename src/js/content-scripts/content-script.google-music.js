@@ -1,0 +1,1 @@
+document.querySelector(\'[data-id="play-pause"]\').click();

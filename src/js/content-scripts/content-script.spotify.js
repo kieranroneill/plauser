@@ -1,0 +1,1 @@
+document.getElementById("app-player").contentWindow.document.getElementById("play-pause").click();

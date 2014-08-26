@@ -13,8 +13,8 @@ YouTubePlauser.prototype.playPause = function(tabId)
 	(
 		tabId, 
 		{
-			code: 
-			'var player=document.getElementById("movie_player");if(player.getPlayerState() == 1){ player.pauseVideo(); }else{ player.playVideo(); }'
+			file:
+			'js/content-scripts/content-script.youtube.js'
 		}
 	);
 };

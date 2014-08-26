@@ -13,7 +13,8 @@ SpotifyPlauser.prototype.playPause = function(tabId)
 	(
 		tabId, 
 		{
-			code: 'document.getElementById("app-player").contentWindow.document.getElementById("play-pause").click();'
+			file:
+			'js/content-scripts/content-script.spotify.js'
 		}
 	);
 };
