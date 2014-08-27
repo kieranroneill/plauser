@@ -7,4 +7,5 @@ Plauser supports the following music services:
 - Google Music
 - Spotify
 - YouTube
+- Grooveshark
 - ...more coming soon!
