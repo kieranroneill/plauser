@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Plauser",
 	"description": "Allows you to play/pause your currently playing track from any tab.",
-	"version": "0.1.7",
+	"version": "0.7.1",
 	"permissions": 
 	[
 		"tabs",
