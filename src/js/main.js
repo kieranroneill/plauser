@@ -4,7 +4,8 @@
 var PlauserUrl = {
 	googleMusic: /https\:\/\/play\.google\.com\/music\/listen/i,
 	spotify: /https\:\/\/play\.spotify\.com/i,
-	youTube: /https\:\/\/www\.youtube\.com\/watch/i
+	youTube: /https\:\/\/www\.youtube\.com\/watch/i,
+	grooveshark: /http\:\/\/grooveshark\.com/i
 };
 
 /**
@@ -22,19 +23,22 @@ chrome.browserAction.onClicked.addListener(function(tab)
 			if(tabs[i].url.match(PlauserUrl.googleMusic))
 			{
 				plauser = new GoogleMusicPlauser();
-				
-				plauser.playPause(tabId);
 			}
 			else if(tabs[i].url.match(PlauserUrl.spotify))
 			{
 				plauser = new SpotifyPlauser();
-				
-				plauser.playPause(tabId);
 			}
 			else if(tabs[i].url.match(PlauserUrl.youTube))
 			{
 				plauser = new YouTubePlauser();
-				
+			}
+			else if(tabs[i].url.match(PlauserUrl.grooveshark))
+			{
+				plauser = new GroovesharkPlauser();
+			}
+			
+			if(plauser != null)
+			{
 				plauser.playPause(tabId);
 			}
 		}
