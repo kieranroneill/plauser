@@ -5,7 +5,8 @@ var PlauserUrl = {
 	googleMusic: /https\:\/\/play\.google\.com\/music\/listen/i,
 	spotify: /https\:\/\/play\.spotify\.com/i,
 	youTube: /https\:\/\/www\.youtube\.com\/watch/i,
-	grooveshark: /http\:\/\/grooveshark\.com/i
+	grooveshark: /http\:\/\/grooveshark\.com/i,
+	soundcloud: /https\:\/\/soundcloud\.com/i
 };
 
 /**
@@ -35,6 +36,10 @@ chrome.browserAction.onClicked.addListener(function(tab)
 			else if(tabs[i].url.match(PlauserUrl.grooveshark))
 			{
 				plauser = new GroovesharkPlauser();
+			}
+			else if(tabs[i].url.match(PlauserUrl.soundcloud))
+			{
+				plauser = new SoundCloudPlauser();
 			}
 			
 			if(plauser != null)
