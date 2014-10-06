@@ -10,16 +10,35 @@ var PlauserUrl = {
 };
 
 /**
+* This is called when a key combination is detected matching the 
+* key combination stored 
+*/
+chrome.runtime.onMessage.addListener(function(request, sender) 
+{
+	plause();
+});
+
+/**
 * Listener for when the user clicks the plauser browser button.
 */
 chrome.browserAction.onClicked.addListener(function(tab) 
+{
+	// Determine whether to play/pause.
+	plause();
+});
+
+/**
+* Convenience method for creating a plauser object based on the 
+* url of all the tabs. If the url constructs a matching Plauser object,
+* the Plauser object runs it's play/pause function.
+*/
+function plause()
 {
 	chrome.tabs.query({}, function(tabs) 
 	{
 		for(var i = 0; i < tabs.length; i++)
 		{
 			var tabId = tabs[i].id;
-			var plauser = null;
 			
 			if(tabs[i].url.match(PlauserUrl.googleMusic))
 			{
@@ -48,4 +67,4 @@ chrome.browserAction.onClicked.addListener(function(tab)
 			}
 		}
 	});
-});
+}
