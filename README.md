@@ -10,3 +10,12 @@ Plauser supports the following music services:
 - Grooveshark
 - SoundCloud
 - ...more coming soon!
+
+Credits
+-------
+- Some due credit to Suan-Aik Yeo and his [jquery-keycombinator][keycombinator].
+- For an excellant jQuery plugin, thanks to CodeSeven's [toastr][toastr]
+ 
+
+[keycombinator]: https://github.com/suan/jquery-keycombinator
+[toastr]: https://github.com/CodeSeven/toastr
