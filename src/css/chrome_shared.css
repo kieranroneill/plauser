@@ -8,7 +8,7 @@
 /* This file holds CSS that should be shared, in theory, by all user-visible
  * chrome:// pages. */
 
-@import url("widgets.css");
+/*@import url("widgets.css");
 
 
 /* Prevent CSS from overriding the hidden property. */

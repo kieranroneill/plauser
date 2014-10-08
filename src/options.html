@@ -1,20 +1,20 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
         <title>Plauser Options</title>
         <meta charset="utf-8"/>
         <meta name="author" content="Kieran O'Neill" />
-        <link rel="shortcut icon" href="img/favicon.ico"> 
+        <link rel="shortcut icon" href="images/favicon.ico">
+		
+		<!-- Fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400italic,400,700italic,700' rel='stylesheet' type='text/css'>
 
+		<!-- Third-party css -->
+		<link rel="stylesheet" href="css/toastr.min.css"/>
+		
         <!-- Style for Chrome extensions by Ram Swaroop - https://github.com/ramswaroop/css-kit-for-chrome-extensions -->
         <link rel="stylesheet" href="css/chrome_shared.css"/>
-
-        <style>
-            /* Style for this page */
-            body>.main-container{max-width:800px;margin:50px auto}
-            header{max-width:800px;margin:0 auto 50px auto;font-size:48px}
-        </style>
+		<link rel="stylesheet" href="css/style.css"/>
 
     </head>
 
@@ -22,27 +22,35 @@
 
         <div class="main-container">
             <header>
-                Plauser
+				<img src="images/icon-plauser-128.png" alt="Plauser logo." title="Plauser">
+                <span>Plauser</span>
             </header>
 
             <h1>Options</h1>
             <hr/>
+			
+			<div class="option-container">
+				<h3>Bind a hotkey:</h3>
+				<input id="bind-hotkey-input" type="text" placeholder="Press a key combination..."/>
+				<button id="clear-key-binding-button">Clear</button>
+			</div>
 
-            <h3>Bind a hotkey:</h3>
-            <input type="text" placeholder="Type here..."/>
-            <br/>
-            <button>Save</button>        
-            <br/>
-            <br/>
+			<div class="save-button-container">
+				<button id="save-button">Save</button>
+			</div>
+			<hr/>
             <p>
                 View the source on <a href="https://github.com/kieranroneill/plauser" target="_blank">Github</a>.
             </p>
-            <br/>
-            <br/>
 
 		</div>
 
-		<!-- Scripts -->
+		<!-- Third party scripts -->
+		<script src="js/libs/jquery-1.11.1.min.js"></script>
+		<script src="js/libs/jquery.keycombinator.min.js"></script>
+		<script src="js/libs/toastr.min.js"></script>
+		
+		<!-- Custom scripts -->
 		<script src="js/options.js"></script>
 	</body>
 
