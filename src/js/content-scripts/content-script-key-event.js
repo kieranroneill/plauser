@@ -1,50 +1,33 @@
+//********************************************************
+// Global objects.
+//********************************************************
+
 var keysPressedArray = [];
 
-function insertKeyToArray(key, array)
-{
-    var alreadyPresent = false;
-
-    if (key === undefined)
-	{
-		if ($.inArray(key, array) >= 0)
-		{ 
-			alreadyPresent = true; 
-		}
-    }
-
-    if (!alreadyPresent)
-	{ 
-		array.push(key);
-	}
-  }
+//********************************************************
+// Event listeners.
+//********************************************************
 
 document.addEventListener("keydown", function(e) 
 {
-	insertKeyToArray(e.keyCode, keysPressedArray);
+	// Add key to global array, if not present.
+	if (!keysPressedArray.contains(e.keyCode))
+	{ 
+		keysPressedArray.push(e.keyCode);
+	}
 });
 
 document.addEventListener("keyup", function(e) 
 {
 	if(keysPressedArray.length > 0)
 	{
-		console.log("keys: " + keysPressedArray);
-	
-		keysPressedArray = [];
+		// Send a messsage to the background script.
+		chrome.runtime.sendMessage(
+		{
+			name: "plauseWithKeys",
+			keys: keysPressedArray
+		});
 		
-		return false;
+		keysPressedArray = [];
 	}
-	
-	// chrome.storage.sync.get(
-	// {
-		// keys: null
-  	// }, 
-  	// function(keys) 
-  	// {
-  		// // If the key combination matches the key combination stored in the
-  		// // options then send a message to the main JavaScript file.
-  		// if(e.keyCode == keyCode && (e.ctrlKey == modifierKey || e.altKey == modifierKey || e.shiftKey == modifierKey))
-  		// {
-  			// chrome.runtime.sendMessage({});
-  		// }
-  	// });
 });

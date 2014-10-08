@@ -32,7 +32,7 @@
 	[
    		{
      		"matches": ["http://*/*", "https://*/*"], // Match all pages.
-     		"js": ["js/content-scripts/content-script-key-event.js"],
+     		"js": ["js/content-scripts/content-script-key-event.js", "js/global.js"],
      		"run_at": "document_start"
    		}
    ]

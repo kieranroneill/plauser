@@ -20,10 +20,16 @@ header > img
 	height: 48px;
 }
 
-header > span
+header > .header-title
 {
 	padding: 0 20px;
 	font-size:48px;
+}
+
+header > .header-sub-title
+{
+	padding: 0 20px;
+	font-size: 18px;
 }
 
 body > .main-container

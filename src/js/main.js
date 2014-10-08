@@ -2,20 +2,40 @@
  * An object literal that provides the regex matches for each url.
  */
 var PlauserUrl = {
-	googleMusic: /https\:\/\/play\.google\.com\/music\/listen/i,
-	spotify: /https\:\/\/play\.spotify\.com/i,
-	youTube: /https\:\/\/www\.youtube\.com\/watch/i,
-	grooveshark: /http\:\/\/grooveshark\.com/i,
-	soundcloud: /https\:\/\/soundcloud\.com/i
+	googleMusic: /(http|https)\:\/\/play\.google\.com\/music\/listen/i,
+	spotify: /(http|https)\:\/\/play\.spotify\.com/i,
+	youTube: /(http|https)\:\/\/www\.youtube\.com\/watch/i,
+	grooveshark: /(http|https)\:\/\/grooveshark\.com/i,
+	soundcloud: /(http|https)\:\/\/soundcloud\.com/i
 };
 
 /**
 * This is called when a key combination is detected matching the 
 * key combination stored 
 */
-chrome.runtime.onMessage.addListener(function(request, sender) 
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) 
 {
-	plause();
+	// Get the current OS.
+	OS.detectCurrentOS();
+
+	if(request.name == "plauseWithKeys")
+	{
+		chrome.storage.sync.get(
+		{
+			keys: {}
+		},
+		function (items)
+		{
+			var storedKeyCodeArray = getKeyCodeCombinationArray(OS.current, items.keys);
+			
+			// If the stored key combination matches the key combination
+			// pressed, then plause.
+			if(storedKeyCodeArray.equals(request.keys))
+			{
+				plause();
+			}
+		});
+	}
 });
 
 /**
@@ -39,6 +59,7 @@ function plause()
 		for(var i = 0; i < tabs.length; i++)
 		{
 			var tabId = tabs[i].id;
+			var plauser = null;
 			
 			if(tabs[i].url.match(PlauserUrl.googleMusic))
 			{

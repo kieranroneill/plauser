@@ -2,26 +2,6 @@
 // Global objects.
 //********************************************************
 
-var OS = {
-	current: null,
-	mac: "mac",
-	windows: "windows",
-	unix: "unix",
-	detectCurrentOS: function()
-	{
-		this.current = this.unix;
-	
-		if (navigator.appVersion.indexOf("Win") != -1)
-		{
-			this.current = this.windows;
-		}
-	
-		if (navigator.appVersion.indexOf("Mac") != -1)
-		{
-			this.current = this.mac;
-		}
-	}
-};
 var keyCombination = {};
 
 //********************************************************
@@ -71,43 +51,6 @@ $("#save-button").click(function()
 //********************************************************
 // Functions
 //********************************************************
-
-/**
- * Iterates through the keys object and builds a key combination string
- * based on the string versions of the keys.
- *
- * @param currentOS the current OS.
- * @param keys an object containing all the keyChars/keyCode combinations
- * for each OS.
- * @return a string representing all the key combinations as strings, or 
- * an empty string.
- */
-function getKeyCombinationCharacterString(currentOS, keys)
-{
-	var keyMapArray = {};
-	var keyCharacterArray = [];
-	
-	if(currentOS == OS.mac)
-	{
-		keyMapArray = keys.mac;
-	}
-	else if(currentOS == OS.windows)
-	{
-		keyMapArray = keys.windows;
-	}
-	else
-	{
-		keyMapArray = keys.unix;
-	}
-	
-	// For each key map, get the character.
-	for(var i = 0; i < keyMapArray.length; i++)
-	{
-		keyCharacterArray.push(keyMapArray[i].keyChar);
-	}
-	
-	return keyCharacterArray.join('+');
-}
 
 /**
  * Convenience method retoring the options.
