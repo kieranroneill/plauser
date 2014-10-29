@@ -1,8 +1,10 @@
 {
 	"manifest_version": 2,
 	"name": "Plauser",
-	"description": "Allows you to play/pause your currently playing track from any tab.",
+	"short_name": "Plauser",
+	"description": "A Chrome extension that allows you to play/pause your current playing track from any tab.",
 	"version": "0.9.1",
+	"author": "Kieran O'Neill",
 	"permissions": 
 	[
 		"tabs",
@@ -31,7 +33,7 @@
 	"content_scripts": 
 	[
    		{
-     		"matches": ["http://*/*", "https://*/*"], // Match all pages.
+     		"matches": ["http://*/*", "https://*/*"],
      		"js": ["js/content-scripts/content-script-key-event.js", "js/global.js"],
      		"run_at": "document_start"
    		}
