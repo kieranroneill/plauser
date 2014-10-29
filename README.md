@@ -1,7 +1,7 @@
 Plauser
 =======
 
-Chrome extension that allows you to play/pause your currently playing track from any tab.
+A Chrome extension that allows you to play/pause your current playing track from any tab.
 
 Plauser supports the following music services:
 - Google Music
@@ -14,7 +14,7 @@ Plauser supports the following music services:
 Credits
 -------
 - Some due credit to Suan-Aik Yeo and his [jquery-keycombinator][keycombinator].
-- For an excellant jQuery plugin, thanks to CodeSeven's [toastr][toastr]
+- For an excellent jQuery plugin, thanks to CodeSeven's [toastr][toastr]
 
 License
 -------
