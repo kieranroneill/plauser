@@ -12,8 +12,7 @@
 		<!-- Third-party css -->
 		<link rel="stylesheet" href="css/toastr.min.css"/>
 		
-        <!-- Style for Chrome extensions by Ram Swaroop - https://github.com/ramswaroop/css-kit-for-chrome-extensions -->
-        <link rel="stylesheet" href="css/chrome_shared.css"/>
+        <!-- Custom -->
 		<link rel="stylesheet" href="css/style.css"/>
 
     </head>
@@ -24,7 +23,7 @@
             <header>
 				<img src="images/icon-plauser-128.png" alt="Plauser logo." title="Plauser">
                 <span class="header-title">Plauser</span>
-				<div><span class="header-sub-title">Chrome extension that allows you to play/pause your currently playing track from any tab.</span></div>
+				<div><span class="header-sub-title">A Chrome extension that allows you to play/pause your current playing track from any tab.</span></div>
             </header>
 
             <h1>Options</h1>
@@ -32,8 +31,14 @@
 			
 			<div class="option-container">
 				<h3>Plauser key bind:</h3>
-				<input id="bind-hotkey-input" type="text" placeholder="Press a key combination..."/>
-				<button id="clear-key-binding-button">Clear</button>
+
+				<div class="warning-text">Warning: Please ensure you do not use the keyboard shortcuts already bound to the Chrome browser. See the list <a href="https://support.google.com/chrome/answer/157179?hl=en" target="_blank">here</a>.</div>
+
+				<div class="input-container">
+					<input id="bind-hotkey-input" type="text" placeholder="Press a key combination..."/>
+					<button id="clear-key-binding-button">Clear</button>
+				</div>
+				
 			</div>
 
 			<div class="save-button-container">
