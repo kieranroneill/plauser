@@ -1,1 +1,0 @@
-document.getElementById('play-pause').click();
