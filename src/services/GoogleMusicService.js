@@ -5,6 +5,8 @@ import BaseService from './BaseService';
  * A service to handle Google Music interactions.
  */
 export default class GoogleMusic extends BaseService {
+    static url = 'play.google.com/music/listen';
+
     constructor() {
         super();
 

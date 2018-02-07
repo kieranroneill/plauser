@@ -10,8 +10,10 @@
     ],
     "globals": {
         "assert": true,
+        "chrome": true,
         "expect": true,
         "match": true,
+        "mock": true,
         "spy": true,
         "stub": true
     },

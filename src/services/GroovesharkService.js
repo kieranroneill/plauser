@@ -5,6 +5,8 @@ import BaseService from './BaseService';
  * A service to handle Grooveshark interactions.
  */
 export default class GroovesharkService extends BaseService {
+    static url = 'grooveshark.com';
+
     constructor() {
         super();
 

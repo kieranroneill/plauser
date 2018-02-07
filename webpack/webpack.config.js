@@ -112,14 +112,14 @@ export default {
             favicon: resolve(srcPath, 'favicon.png'),
             filename: 'options.html',
             inject: false,
-            template: resolve(srcPath, 'options.hbs'),
+            template: resolve(srcPath, 'templates', 'options.hbs'),
             title: `${title} Options`,
         }),
         new HtmlWebpackPlugin({
             bundle: 'background.js',
             filename: 'background.html',
             inject: false,
-            template: resolve(srcPath, 'background.hbs')
+            template: resolve(srcPath, 'templates', 'background.hbs')
         }),
         new WebpackNotifierPlugin({
             title: 'UNICORN POWER_UP!!!',

@@ -5,6 +5,8 @@ import BaseService from './BaseService';
  * A service to handle YouTube interactions.
  */
 export default class YouTubeService extends BaseService {
+    static url = 'youtube.com/watch';
+
     constructor() {
         super();
 

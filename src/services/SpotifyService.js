@@ -5,6 +5,8 @@ import BaseService from './BaseService';
  * A service to handle Spotify interactions.
  */
 export default class SpotifyService extends BaseService {
+    static url = 'play.spotify.com';
+
     constructor() {
         super();
 
