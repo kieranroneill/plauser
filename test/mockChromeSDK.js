@@ -8,6 +8,14 @@ export default {
         }
     },
 
+    runtime: {
+        onMessage: {
+            addEventListener: stub()
+        },
+
+        sendMessage: stub()
+    },
+
     tabs: {
         executeScript: stub(),
         query: stub()

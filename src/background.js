@@ -1,10 +1,15 @@
+import { xor } from 'lodash/array';
+
+// Constants.
+import { KEY_COMBINATION_PRESSED_MESSAGE } from './constants/messages';
+
 // Utilities.
-import { getService } from './utilities/ApplicationUtil';
+import { getCurrentOS, getKeyCodeCombinationArray, getService } from './utilities/ApplicationUtil';
 
 /**
- * Listener for when the user clicks the plauser browser button.
+ * Iterates through the tabs and plauses the tab if it the url is valid.
  */
-window.chrome.browserAction.onClicked.addListener(() => {
+function queryTabsAndPlause() {
     window.chrome.tabs.query({}, tabs => {
         tabs.forEach(tab => {
             const service = getService(tab.url);
@@ -14,32 +19,29 @@ window.chrome.browserAction.onClicked.addListener(() => {
             }
         });
     });
-});
+}
+
+/**
+ * Listener for when the user clicks the plauser browser button.
+ */
+window.chrome.browserAction.onClicked.addListener(queryTabsAndPlause);
 
 /**
  * This is called when a key combination is detected matching the
  * key combination stored
  */
-window.chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    // Get the current OS.
-    OS.detectCurrentOS();
+window.chrome.runtime.onMessage.addListener(request => {
+    let keyCodeArray;
 
-    if(request.name == "plauseWithKeys")
-    {
-        chrome.storage.sync.get(
-            {
-                keys: {}
-            },
-            function (items)
-            {
-                var storedKeyCodeArray = getKeyCodeCombinationArray(OS.current, items.keys);
+    if (request.name === KEY_COMBINATION_PRESSED_MESSAGE) {
+        chrome.storage.sync.get({ keys: {} }, items => {
+            keyCodeArray = getKeyCodeCombinationArray(getCurrentOS(), items.keys);
 
-                // If the stored key combination matches the key combination
-                // pressed, then plause.
-                if(storedKeyCodeArray.equals(request.keys))
-                {
-                    plause();
-                }
-            });
+            // If the stored key combination matches the key combination
+            // pressed, then plause.
+            if (xor(keyCodeArray, request.keys).length > 0) {
+                queryTabsAndPlause();
+            }
+        });
     }
 });

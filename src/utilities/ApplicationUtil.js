@@ -8,6 +8,12 @@ import SoundCloudService from '../services/SoundCloudService';
 import SpotifyService from '../services/SpotifyService';
 import YouTubeService from '../services/YouTubeService';
 
+export const defaultKeys = {
+    mac: [],
+    unix: [],
+    windows: []
+};
+
 /**
  * Gets the OS the browser is running on.
  * @param userAgent the userAgent of the browser.
@@ -23,6 +29,65 @@ export function getCurrentOS(userAgent = '') {
     }
 
     return UNIX_OS;
+}
+
+/**
+ * Gets the key code combination that matches the keys.
+ * @param os the OS to use.
+ * @param keys the key combination.
+ * @return {Array} an array of keyCodes.
+ */
+export function getKeyCodeCombinationArray(os, keys = defaultKeys) {
+    let keyMapArray = [];
+
+    switch (os) {
+        case OSX_OS:
+            keyMapArray = keys.mac;
+
+            break;
+        case UNIX_OS:
+            keyMapArray = keys.unix;
+
+            break;
+        case WINDOWS_OS:
+            keyMapArray = keys.windows;
+
+            break;
+        default:
+            break;
+    }
+
+    return keyMapArray.map(item => item.keyCode);
+}
+
+/**
+ * Gets the key code combination that matches the keys as a "+" separated string.
+ * @param os the OS to use.
+ * @param keys the key combination.
+ * @return {String} keys as a "+" separated string, or an empty string.
+ */
+export function getKeyCodeCombinationString(os, keys = defaultKeys) {
+    let keyMapArray = [];
+
+    switch (os) {
+        case OSX_OS:
+            keyMapArray = keys.mac;
+
+            break;
+        case UNIX_OS:
+            keyMapArray = keys.unix;
+
+            break;
+        case WINDOWS_OS:
+            keyMapArray = keys.windows;
+
+            break;
+        default:
+            break;
+    }
+
+    return keyMapArray.map(item => item.keyChar)
+        .join('+');
 }
 
 /**
