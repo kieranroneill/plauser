@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import WebpackNotifierPlugin from 'webpack-notifier';
 
 // Common.
-import { entry, extensions, loaders, output, plugins, srcPath, title } from './common.config';
+import { alias, entry, extensions, loaders, output, plugins, srcPath, title } from './common.config';
 
 export default {
     devtool: 'source-map',
@@ -32,6 +32,7 @@ export default {
             favicon: resolve(srcPath, 'favicon.png'),
             filename: 'options.html',
             inject: false,
+            styles: 'styles.css',
             template: resolve(srcPath, 'templates', 'options.hbs'),
             title: `${title} Options`,
         }),
@@ -49,6 +50,7 @@ export default {
     ]),
 
     resolve: {
+        alias,
         extensions
     }
 };

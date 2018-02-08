@@ -1,3 +1,4 @@
+import autoprefixer from 'autoprefixer';
 import CleanPlugin from 'clean-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ExtractTextPlugin, { extract } from 'extract-text-webpack-plugin';
@@ -7,6 +8,9 @@ import webpack from 'webpack';
 
 const uriLimit = 50000; // 50kb
 
+export const alias = {
+    vue: 'vue/dist/vue.common.js'
+};
 export const distPath = join(__dirname, '..', 'dist');
 export const srcPath = join(__dirname, '..', 'src');
 export const title = 'Plauser';
@@ -15,7 +19,7 @@ export const entry = {
     'content-script': resolve(srcPath, 'content-script.js'),
     'options': resolve(srcPath, 'options.js')
 };
-export const extensions = ['.js'];
+export const extensions = ['.js', '.vue'];
 export const output = {
     filename: '[name].js',
     path: distPath
@@ -30,14 +34,27 @@ export const loaders = [
     // Script loaders.
     {
         test: /.js$/,
-        use: 'babel-loader'
+        use: ['babel-loader'],
+    },
+    {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+            loaders: {
+                scss: extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'postcss-loader', 'sass-loader']
+                })
+            },
+            extractCSS: true
+        }
     },
     // Style loaders.
     {
         test: /\.scss$/,
         use: extract({
             fallback: 'style-loader',
-            use: ['css-loader', 'sass-loader']
+            use: ['css-loader', 'postcss-loader', 'sass-loader']
         })
     },
     // Assets loaders.
@@ -86,11 +103,6 @@ export const plugins = [
         { from: resolve(srcPath, 'manifest.json'), to: distPath },
         { from: resolve(srcPath, 'assets'), to: resolve(distPath, 'assets') }
     ]),
-    new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'), // Default to development.
-        }
-    }),
     new ExtractTextPlugin({
         filename: 'styles.css',
         allChunks: true
@@ -99,4 +111,16 @@ export const plugins = [
         logo: resolve(srcPath, 'favicon.png'),
         title
     }),
+    new webpack.DefinePlugin({
+        'process.env': {
+            NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'), // Default to development.
+        }
+    }),
+    new webpack.LoaderOptionsPlugin({
+        options: {
+            postcss: () => [
+                autoprefixer({ browsers: ['last 3 versions'] })
+            ]
+        }
+    })
 ];

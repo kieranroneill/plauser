@@ -3,7 +3,7 @@ import {  resolve } from 'path';
 import webpack from 'webpack';
 
 // Common.
-import { entry, extensions, loaders, output, plugins, srcPath, title } from './common.config';
+import { alias, entry, extensions, loaders, output, plugins, srcPath, title } from './common.config';
 
 export default {
     devtool: false,
@@ -28,6 +28,7 @@ export default {
                 minifyJS: true,
                 minifyCSS: true
             },
+            styles: 'styles.css',
             template: resolve(srcPath, 'templates', 'options.hbs'),
             title: `${title} Options`,
         }),
@@ -54,6 +55,7 @@ export default {
     ]),
 
     resolve: {
+        alias,
         extensions
     }
 };
