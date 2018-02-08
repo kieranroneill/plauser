@@ -93,7 +93,23 @@ export const loaders = [
             limit: uriLimit,
             mimeType: 'image/svg+xml'
         }
-    }
+    },
+    {
+        test: /\.woff$/,
+        loader: 'url-loader',
+        options: {
+            limit: uriLimit,
+            mimeType: 'application/font-woff'
+        }
+    },
+    {
+        test: /\.woff2$/,
+        loader: 'url-loader',
+        options: {
+            limit: uriLimit,
+            mimeType: 'application/font-woff2'
+        }
+    },
 ];
 export const plugins = [
     new CleanPlugin(['dist'], {
