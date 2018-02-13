@@ -5,10 +5,12 @@ import { OSX_OS, UNIX_OS, WINDOWS_OS } from '../constants/os';
 import { getCurrentOS, getKeyCodeCombinationArray, getKeyCodeCombinationString, getService } from './ApplicationUtil';
 
 // Services.
+import DailyMotionService from '../services/DailyMotionService';
 import GoogleMusicService from '../services/GoogleMusicService';
 import GroovesharkService from '../services/GroovesharkService';
 import SoundCloudService from '../services/SoundCloudService';
 import SpotifyService from '../services/SpotifyService';
+import VimeoService from '../services/VimeoService';
 import YouTubeService from '../services/YouTubeService';
 
 describe('utilities/ApplicationUtil', () => {
@@ -185,6 +187,12 @@ describe('utilities/ApplicationUtil', () => {
             expect(service).to.be.null;
         });
 
+        it('should return a service for the DailyMotion url', () => {
+            const service = getService('http://www.dailymotion.com/video/x6cx3i4');
+
+            expect(service).to.be.an.instanceOf(DailyMotionService);
+        });
+
         it('should return a service for the Google Music url', () => {
             const service = getService('https://play.google.com/music/listen/');
 
@@ -207,6 +215,12 @@ describe('utilities/ApplicationUtil', () => {
             const service = getService('https://play.spotify.com');
 
             expect(service).to.be.an.instanceOf(SpotifyService);
+        });
+
+        it('should return a service for the Vimeo url', () => {
+            const service = getService('https://vimeo.com/channels/staffpicks/250196726');
+
+            expect(service).to.be.an.instanceOf(VimeoService);
         });
 
         it('should return a service for the YouTube url', () => {

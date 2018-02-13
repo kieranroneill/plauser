@@ -2,10 +2,12 @@
 import { OSX_OS, UNIX_OS, WINDOWS_OS } from '../constants/os';
 
 // Services.
+import DailyMotionService from '../services/DailyMotionService';
 import GoogleMusicService from '../services/GoogleMusicService';
 import GroovesharkService from '../services/GroovesharkService';
 import SoundCloudService from '../services/SoundCloudService';
 import SpotifyService from '../services/SpotifyService';
+import VimeoService from '../services/VimeoService';
 import YouTubeService from '../services/YouTubeService';
 
 export const defaultKeys = {
@@ -96,27 +98,15 @@ export function getKeyCodeCombinationString(os, keys = defaultKeys) {
  * @return {Object} a service or null if the url does not match a service.
  */
 export function getService(url = '') {
-    let service = null;
+    const service = [
+        DailyMotionService,
+        GoogleMusicService,
+        GroovesharkService,
+        SoundCloudService,
+        SpotifyService,
+        VimeoService,
+        YouTubeService
+    ].find(item => url.indexOf(item.url) > -1);
 
-    if (url.indexOf(GoogleMusicService.url) > -1) {
-        service = new GoogleMusicService();
-    }
-
-    if (url.indexOf(GroovesharkService.url) > -1) {
-        service = new GroovesharkService();
-    }
-
-    if (url.indexOf(SoundCloudService.url) > -1) {
-        service = new SoundCloudService();
-    }
-
-    if (url.indexOf(SpotifyService.url) > -1) {
-        service = new SpotifyService();
-    }
-
-    if (url.indexOf(YouTubeService.url) > -1) {
-        service = new YouTubeService();
-    }
-
-    return service;
+    return (service ? new service() : null);
 }
